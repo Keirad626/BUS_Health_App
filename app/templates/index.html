@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard: Remote Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome, {{ username }}</h1>
+    <p><strong>Role:</strong> {{ role }}</p>
+
+    <hr>
+
+    {% if role == "Elderly Person" %}
+        <h3> Your Health Overview </h3>
+        <u1>
+            <li>Medication Reminder</li>
+            <li>Daily Health Log (Obs Req)</li>
+            <li>Activity Tracker</li>
+        </u1>
+
+    {% elif role == "Carer" %}
+        <h3>Patient Monitoring Panel</h3>
+        <ul>
+            <li>View Patient Care Plan</li>
+            <li>Medication Reports</li>
+            <li>Messages and Patient Notes</li>
+            <li>Export Data</li>
+        </ul>
+
+    {% elif role == "Family" %}
+        <h3>Patient Overview</h3>
+        <ul>
+            <li>View Patient Updates</li>
+            <li>View Patient Care Plan</li>
+            <li>Contact/Support</li>
+            <li>Order Medication</li>
+        </ul>
+
+    {& elif role == "Admin" %}
+    <h3> Administration </h3>
+    <ul>
+        <li>Manage Users</li>
+    </ul>
+
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('app.logout') }}">Logout</a>
+</div>
+
+</body>
+</html>
