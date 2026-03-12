@@ -1,10 +1,12 @@
 from flask import Flask
-from .routes import app as app_blueprint
+from flask_sqlalchemy import SQLAlchemy
 
-def create_app():
-    app = Flask(__name__)
-    app.secret_key = "supersecretkey"
+app = Flask(__name__)
 
-    app.register_blueprint(app_blueprint)
+app.config["SECRET_KEY"] = "supersecretkey"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///site.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    return app
+db = SQLAlchemy(app)
+
+from app import routes

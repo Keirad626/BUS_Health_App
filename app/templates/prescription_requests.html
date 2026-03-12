@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+<h1>Prescription Requests</h1>
+
+<table>
+
+<tr>
+    <th>Prescription</th>
+    <th>Requested By</th>
+    <th>Status</th>
+    <th>Action</th>
+</tr>
+
+{% for request in requests %}
+
+<tr>
+
+<td>{{ request.prescription.medicine }}</td>
+<td>{{ request.requestee.email }}</td>
+<td>{{ request.status }}</td>
+
+<td>
+
+{% if request.status == "pending" %}
+<a href="{{ url)for('approve_prescription', id=request.id) }}">
+    Approve
+</a>
+
+|
+
+<a href="{{ url_for('reject_prescription', id=request.id) }}">
+Reject
+</a>
+
+{% else %}
+Processed
+
+{% endif %}
+
+</td>
+</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>Remote Health Monitoring</h1>
+    <h2>Your Appointments</h2>
+
+    <div class="center-page">
+        <div class="container">
+
+            <a href="{{ url_for('create_appointment') }}">Return to book an Appointment</a>
+
+            <ul>
+                {% for appointment in appointments %}
+                <li>
+                    <b>{{ appointment.title }}</b><br>
+                    {{ appointment.appointment_date }}<br>
+                    Status: {{ appointment.status }}
+
+                    {% if appointment.status != "cancelled" %}
+                        <a href="{{ url_for('cancel_appointment', id=appointment.id) }}">
+                            Cancel
+                        </a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+
+            {% if session['role'] == 'patient' %}
+                <a href="{{ url_for('patient_dashboard') }}">Return to Dashboard</a>
+
+            {% elif session['role'] == 'family' %}
+                <a href="{{ url_for('family_dashboard') }}">Return to Dashboard</a>
+
+            {% elif session['role'] == 'doctor' %}
+                <a href="{{ url_for('doctor_dashboard') }}">Return to Dashboard</a>
+
+            {% elif session['role'] == 'carer' %}
+                <a href="{{ url_for('carer_dashboard') }}">Return to Dashboard</a>
+            {% endif %}
+
+        </div>
+    </div>
+
+</body>
+</html>

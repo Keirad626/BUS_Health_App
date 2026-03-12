@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+    <h1>Remote Health Monitoring</h1>
+    <h2>Doctor Dashboard</h2>
+
+    <div class="center-page">
+        <div class="container">
+
+            <div class="form-box blue-box">
+                <h3>Options</h3>
+
+                <p><a> href="{{ url_for('appointments') }}">View Patient Appointments</a></p>
+                <p><a> href="{{ url_for('create_appointment') }}">Schedule Patient Appointment</a></p>
+            </div>
+            
+            <p class="info"><a href="{{ url_for('logout') }}">Logout</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -6,35 +6,36 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
-<body>
+<body class="center-page">
 
     <div class="container">
 
         <h1>Remote Health Monitoring</h1>
         <h2>Login</h2>
 
-        {% if error %}
-            <p class="error">{{ error }}</p>
-        {% endif %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
 
         <form method="POST">
+            {{ form.hidden_tag() }}
 
-            <label for="username">Username</label>
-            <input id="username" type="text" name="username" required>
+            <label for="email">Email</label>
+            {{ form.email(class="input-field") }}
 
             <label for="password">Password</label>
-            <input id="password" type="password" name="password" required>
+            {{ form.password(class="input-field") }}
 
-            <button type="submit">Login</button>
-
+            {{ form.submit(class="btn") }}
         </form>
 
         <p class="info">
-            Demo accounts:<br>
-            ElderlyPerson / abc123<br>
-            carer / 1234<br>
-            Family / 4567<br>
-            admin / 7890
+            Don't have an account?
+            <a href="{{ url_for('register') }}">Register here</a>
         </p>
 
     </div>

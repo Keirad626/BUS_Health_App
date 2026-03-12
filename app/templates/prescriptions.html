@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Prescriptions</h1>
+
+{% if session.role == "doctor" %}
+<a href="/create_prescription" class="button">Create Prescription</a>
+{% endif %}
+
+<table>
+    <tr>
+        <th>Medicine</th>
+        <th>Dosage</th>
+        <th>Instructions</th>
+        <th>Repeat</th>
+    </tr>
+
+    {% for prescription in prescriptions %}
+    <tr>
+        <td>{{ prescription.medicine }}</td>
+        <td>{{ prescription.dosage }}</td>
+        <td>{{ prescription.instructions }}</td>
+        <td>
+            {% if prescription.repeat_allowed %}
+                <a href="{{ url_for('request_repeat', prescription_id=prescription.id )}}">
+                    Request Repeat
+                </a>
+            {% else %}
+                No repeat repeat_allowed
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    
+</table>
+
+{% endblock %}
+

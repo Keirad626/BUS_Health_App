@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register – Remote Health Monitoring</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="center-page">
+
+    <div class="container">
+
+        <h1>Remote Health Monitoring</h1>
+        <h2>Create an Account</h2>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <div class="form-box blue-box">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+
+                <label for="first_name">First Name</label>
+                {{ form.first_name(class="input-field") }}
+
+                <label for="last_name">Last Name</label>
+                {{ form.last_name(class="input-field") }}
+
+                <label for="email">Email</label>
+                {{ form.email(class="input-field") }}
+
+                <label for="role">Register As</label>
+                {{ form.role(class="input-field") }}
+
+                <label for="password">Password</label>
+                {{ form.password(class="input-field") }}
+
+                <label for="confirm_password">Confirm Password</label>
+                {{ form.confirm_password(class="input-field") }}
+
+                {{ form.submit(class="btn") }}
+            </form>
+        </div>
+
+        <p class="info">
+            Already have an account?
+            <a href="{{ url_for('login') }}">Login here</a>
+        </p>
+
+    </div>
+
+</body>
+</html>

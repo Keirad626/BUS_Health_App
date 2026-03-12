@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Create Prescription</h1>
+
+<form method="POST">
+
+    {{ form.hidden_tag() }}
+
+    <p>
+        {{ form.medicine.label }} <br>
+        {{ form.medicine(size=40) }}
+    </p>
+
+    <p>
+        {{ form.dosage.label }}<br>
+        {{ form.dosable(size=40) }}
+    </p>
+
+    <p>
+        {{ form.instructions.label }}<br>
+        {{ form.instructions(|rows=4, cols=40) }}
+    </p>
+
+    <p>
+        {{ form.repeat_allowed.label }}
+        {{ form.repeat_allowed() }}
+    </p>
+
+    <p>
+        <button type="submit">Create Prescription</button>
+    </p>
+
+</form>
+
+{% endblock %}

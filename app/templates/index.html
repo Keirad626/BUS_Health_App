@@ -1,55 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard: Remote Monitoring</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-<div class="container">
-    <h1>Welcome, {{ username }}</h1>
-    <p><strong>Role:</strong> {{ role }}</p>
+{% block content %}
 
-    <hr>
+<h2>Welcome {{ user.first_name }}</h2>
 
-    {% if role == "Elderly Person" %}
-        <h3> Your Health Overview </h3>
-        <u1>
-            <li>Medication Reminder</li>
-            <li>Daily Health Log (Obs Req)</li>
-            <li>Activity Tracker</li>
-        </u1>
+<p>Your role: <b>{{ user.role }}</b></p>
 
-    {% elif role == "Carer" %}
-        <h3>Patient Monitoring Panel</h3>
-        <ul>
-            <li>View Patient Care Plan</li>
-            <li>Medication Reports</li>
-            <li>Messages and Patient Notes</li>
-            <li>Export Data</li>
-        </ul>
+<a href="{{ url_for('logout') }}">Logout</a>
 
-    {% elif role == "Family" %}
-        <h3>Patient Overview</h3>
-        <ul>
-            <li>View Patient Updates</li>
-            <li>View Patient Care Plan</li>
-            <li>Contact/Support</li>
-            <li>Order Medication</li>
-        </ul>
+<div class="card">
 
-    {& elif role == "Admin" %}
-    <h3> Administration </h3>
-    <ul>
-        <li>Manage Users</li>
-    </ul>
+<h2>Upcoming Appointments</h2>
 
-    {% endif %}
+{% if appointments %}
 
-    <br>
-    <a href="{{ url_for('app.logout') }}">Logout</a>
+<ul>
+{% for appointment in appointments %}
+<li>
+<b>{{ appointment.title }}</b><br>
+{{ appointment.appointment_date.strftime("%d %B %Y %H:%M") }}
+</li>
+{% endfor %}
+</ul>
+
+{% else %}
+
+<p>No upcoming appointments</p>
+
+{% endif %}
+
 </div>
 
-</body>
-</html>
+
+<div class="card">
+
+<h2>Menu</h2>
+
+{% if user.role == "patient" %}
+
+<a href="{{ url_for('appointments') }}">View My Appointments</a><br>
+<a href="{{ url_for('create_appointment') }}">Request Appointment</a><br>
+
+{% elif user.role == "family" %}
+
+<a href="{{ url_for('appointments') }}">View Patient Appointments</a><br>
+<a href="{{ url_for('create_appointment') }}">Schedule Appointment</a><br>
+
+{% elif user.role == "carer" %}
+
+<a href="{{ url_for('appointments') }}">View Care Schedule</a><br>
+<a href="{{ url_for('create_appointment') }}">Add Care Visit</a><br>
+
+{% elif user.role == "doctor" %}
+
+<a href="{{ url_for('appointments') }}">View All Appointments</a><br>
+<a href="{{ url_for('create_appointment') }}">Create Appointment</a><br>
+
+{% endif %}
+
+</div>
+
+{% endblock %}

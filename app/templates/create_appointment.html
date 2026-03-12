@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book an Appointment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <h1>Remote Health Monitoring</h1>
+    <h2>Create Appointment</h2>
+
+    <div class="center-page">
+
+        <div class="container">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <p class="{{ category }}">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <div class="form-box blue-box">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+
+                    <label for="title">Title</label>
+                    {{ form.title(class="input-field") }}
+
+                    <label for="appointment_date">Appointment Date</label>
+                    {{ form.appointment_date(class="input-field") }}
+
+                    <label for="status">Status</label>
+                    {{ form.status(class="input-field") }}
+
+                    <label for="description">Description</label>
+                    {{ form.description(class="input-field") }}
+
+                    {{ form.submit(class="btn") }}
+                </form>
+            </div>
+
+            <p class="info">
+                <a href="{{ url_for('appointments') }}">Return to Appointments</a>
+            </p>
+
+            {% if session['role'] == 'patient' %}
+                <a href="{{ url_for('patient_dashboard') }}">Return to Dashboard</a>
+
+            {% elif session['role'] == 'family' %}
+                <a href="{{ url_for('family_dashboard') }}">Return to Dashboard</a>
+
+            {% elif session['role'] == 'doctor' %}
+                <a href="{{ url_for('doctor_dashboard') }}">Return to Dashboard</a>
+            {% endif %}
+
+        </div>
+    </div>
+
+</body>
+</html>

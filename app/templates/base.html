@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remote Health Monitoring</title>
+
+    <style>
+
+        body{
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            background-color: #e6f2ff;
+            margin: 40px;
+        }
+
+        h1{
+            color:#1a3d7c;
+        }
+
+        a{
+            display:inline-block;
+            background-color:#2b6cb0;
+            color:white;
+            padding:12px 18px;
+            margin:8px 5px;
+            text-decoration:none;
+            border-radius:6px;
+        }
+
+        a:hover{
+            background-color:#1e4f8a;
+        }
+
+        .card{
+            background:white;
+            padding:20px;
+            margin-top:20px;
+            border-radius:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>Remote Health Monitoring Platform</h1>
+
+<hr>
+
+{% block content %}
+{% endblock %}
+
+</body>
+
+<nav>
+<a href="{{ url_for('index') }}">Home</a>
+<a href="{{ url_for('appointments') }}">Appointments</a>
+<a href="{{ url_for('prescriptions') }}">Prescriptions</a>
+<a href="{{ url_for('logout') }}">Logout</a>
+</nav>
+
+{% if session.role == "doctor" %}
+<a href="{{ url_for('patients') }}">Patients</a>
+{% endif %}
+
+</html>

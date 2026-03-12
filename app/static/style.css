@@ -2,40 +2,51 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #2a7de1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     background: white;
     padding: 40px;
     border-radius: 12px;
-    width: 400px;
-    box-shadow: - 5px 15px rgba(0,0,0,0.1);
+    width: 600px;
+    box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
 }
 
 h1, h2 {
     text-align: center;
+    margin-top: 0;
 }
 
-input {
+.input-field,
+input,
+select {
     width: 100%;
     padding: 10px;
-    margin: 8px 0;
+    margin: 8px 0 15px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
-button {
+button,
+.btn {
     width: 100%;
     padding: 10px;
     background-color: #2a7de1;
     color: white;
     border: none;
     border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
 }
 
-button:hover {
+button:hover,
+.btn:hover {
     background-color: #1d5fbf;
 }
 
@@ -47,4 +58,53 @@ button:hover {
     font-size: 12px;
     margin-top: 10px;
     color: grey;
+}
+.blue-box {
+    background-color: #e3f0ff;
+    border: 2px solid #4a90e2;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.appointment-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.appointment-item {
+    background: #e3f0ff;
+    border: 2px solid #4a90e2;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.cancel-link {
+    color: #c0392b;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.cancel-link:hover {
+    text-decoration: underline;
+}
+
+.center-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solic #ccc;
+    text-align: left;
 }
