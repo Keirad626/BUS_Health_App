@@ -8,22 +8,38 @@
 </head>
 <body>
 
-    <h1>Remote Health Monitoring</h1>
-    <h2>Doctor Dashboard</h2>
+    <title>Remote Health Monitoring</title>
+    <h1>Doctor Dashboard</h1>
 
-    <div class="center-page">
-        <div class="container">
+    <p>Welcome back!</p>
 
-            <div class="form-box blue-box">
-                <h3>Options</h3>
+    <div class="dashboard-grid">
+        <div class="card">
+            <h2>Appointments</h2>
+            <p>View Scheduled Appointments</p>
 
-                <p><a> href="{{ url_for('appointments') }}">View Patient Appointments</a></p>
-                <p><a> href="{{ url_for('create_appointment') }}">Schedule Patient Appointment</a></p>
-            </div>
-            
-            <p class="info"><a href="{{ url_for('logout') }}">Logout</a></p>
+            <a class="btn" href="{{url_for('view_appointments')}}">
+                View Appointments
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>Schedule</h2>
+            <p>Create a new appointment</p>
+
+            <a class="btn" href="{{url_for('create_appointment')}}">
+                Schedule Appointment
+            </a>
+        </div>
+
+        <div class="card">
+            <h2>Patients</h2>
+            <p>View registered patients and manage care</p>
+
+            <a class="btn" href="{{url_for('view_patients')}}">
+                View Patients
+            </a>
         </div>
     </div>
-
 </body>
 </html>

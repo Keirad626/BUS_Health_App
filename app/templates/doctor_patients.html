@@ -1,0 +1,16 @@
+<h1>Patients</h1>
+
+
+{% for patient in patients %}
+    <div class="card">
+        <h3>{{patient.first_name}} {{patient.last_name}}</h3>
+
+        <a href="{{url_for('prescribe', patient_id=patient.id)}}">
+            Add Prescription
+        </a>
+
+        <a href="{{url_for('view_patient_notes', patient_id=patient.id)}}">
+            View Notes
+        </a>
+    </div>
+{% endfor %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Notes for {{patient.full_name}}</h1>
+
+<form method="POST" action="{{url_for('add_doctor_note', patient_id=patient.id) }}">
+    <textarea name="content" rows="3" class="input-field" placeholder="Write a new note..." required></textarea>
+    <button class="btn">Add Note</button>
+</form>
+
+<hr>
+
+<ul> 
+    {% for not in notes %}
+    <li class="blue-box">
+         <strong>{{ note.note_type.replace('_', ' ').title() }}</strong><br>
+            {{ note.content }}<br>
+            <small>{{ note.created_at.strftime('%d %b %Y %H:%M') }}</small>
+        </li>
+    {% endfor %}
+</ul>
+ {% endblock %}

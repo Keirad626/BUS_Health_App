@@ -9,27 +9,27 @@
     {{ form.hidden_tag() }}
 
     <p>
-        {{ form.medicine.label }} <br>
-        {{ form.medicine(size=40) }}
+        {{ form.medicine_name.label }} <br>
+        {{ form.medicine_name(size=40) }}
     </p>
 
     <p>
-        {{ form.dosage.label }}<br>
-        {{ form.dosable(size=40) }}
+        {{ form.dosage.label }} <br>
+        {{ form.dosage(size=40) }}
     </p>
 
     <p>
-        {{ form.instructions.label }}<br>
-        {{ form.instructions(|rows=4, cols=40) }}
+        {{ form.instructions.label }} <br>
+        {{ form.instructions(rows=4, cols=40) }}
     </p>
 
     <p>
-        {{ form.repeat_allowed.label }}
         {{ form.repeat_allowed() }}
+        {{ form.repeat_allowed.label }}
     </p>
 
     <p>
-        <button type="submit">Create Prescription</button>
+        <button type="submit" class="btn">Create Prescription</button>
     </p>
 
 </form>

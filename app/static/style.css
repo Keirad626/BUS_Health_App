@@ -10,8 +10,10 @@ body {
     background: white;
     padding: 40px;
     border-radius: 12px;
-    width: 600px;
-    box-shadow: -5px 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    margin: 0;
+    padding-left: 10px
+    
 }
 
 h1, h2 {
@@ -93,7 +95,7 @@ button:hover,
 
 .center-page {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
 }
@@ -107,4 +109,45 @@ th, td {
     padding: 12px;
     border-bottom: 1px solic #ccc;
     text-align: left;
+}
+
+.btn {
+    display: iniline-block;
+    padding: 10px 15px;
+    background-color: #2d7df6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.dashboard-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background: #f9f9f9;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    width: 260px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 15px;
+    background: #2d6cdf;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
 }
