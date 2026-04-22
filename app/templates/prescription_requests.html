@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% block content %}
 <h1>Prescription Requests</h1>
 
 <table>
@@ -22,7 +23,7 @@
 <td>
 
 {% if request.status == "pending" %}
-<a href="{{ url)for('approve_prescription', id=request.id) }}">
+<a href="{{ url_for('approve_prescription', id=request.id) }}">
     Approve
 </a>
 

@@ -151,3 +151,41 @@ th, td {
     text-decoration: none;
     border-radius: 6px;
 }
+
+.appointments-title {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 28px;
+    color: #ffffff;
+}
+
+.appointments-card {
+    width: 90%;
+    margin: 20px auto 60px auto;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.appointments-table th {
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.appointments-table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.appointments-table tr:hover {
+    background: #f5f9ff;
+}

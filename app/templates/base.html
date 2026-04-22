@@ -49,7 +49,7 @@
     <a href="{{ url_for('logout') }}">Logout</a>
 
     {% if session.get('role') == 'doctor' %}
-        <a href="{{ url_for('patients') }}">Patients</a>
+        <a href="{{ url_for('view_patients') }}">Patients</a>
         <a href="{{ url_for('doctor_dashboard') }}">Dashboard</a>
 
     {% elif session.get('role') == 'patient' %}

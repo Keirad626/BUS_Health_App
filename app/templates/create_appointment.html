@@ -24,7 +24,8 @@
             {% endwith %}
 
             <div class="form-box blue-box">
-                <form method="POST" action="">
+
+                <form method="POST">
                     {{ form.hidden_tag() }}
 
                     <label for="title">Title</label>
@@ -39,8 +40,14 @@
                     <label for="description">Description</label>
                     {{ form.description(class="input-field") }}
 
-                    {{ form.submit(class="btn") }}
+                    {% if session['role'] in ['doctor', 'carer'] %}
+                        <label for="patient_id">Select Patient</label>
+                        {{ form.patient_id(class="input-field") }}
+                    {% endif %}
+
+                    <button type="submit" name="submit" class="btn">Create Appointment</button>
                 </form>
+
             </div>
 
             <p class="info">
@@ -55,6 +62,9 @@
 
             {% elif session['role'] == 'doctor' %}
                 <a href="{{ url_for('doctor_dashboard') }}">Return to Dashboard</a>
+
+            {% elif session['role'] == 'carer' %}
+                <a href="{{ url_for('carer_dashboard') }}">Return to Dashboard</a>
             {% endif %}
 
         </div>

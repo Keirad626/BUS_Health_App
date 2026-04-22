@@ -4,8 +4,8 @@
 
 <h1>Prescriptions</h1>
 
-{% if session.role == "doctor" %}
-<a href="/create_prescription" class="button">Create Prescription</a>
+{% if session.get('role') == "doctor" %}
+<a href="{{ url_for('create_prescription', patient_id=session.get('user_id')) }}" class="button">Create Prescription</a>
 {% endif %}
 
 <table>
@@ -18,7 +18,7 @@
 
     {% for prescription in prescriptions %}
     <tr>
-        <td>{{ prescription.medicine }}</td>
+        <td>{{ prescription.medicine_name }}</td>
         <td>{{ prescription.dosage }}</td>
         <td>{{ prescription.instructions }}</td>
         <td>
@@ -27,7 +27,7 @@
                     Request Repeat
                 </a>
             {% else %}
-                No repeat repeat_allowed
+                No repeat repeat allowed
             {% endif %}
         </td>
     </tr>

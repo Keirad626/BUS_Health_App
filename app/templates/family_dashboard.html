@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Family Dashboard</h2>
+
+<div class="card">
+    <h3>Patient Information</h3>
+    <p><strong>Name:</strong> {{ patient.full_name }}</p>
+    <p><strong>Email:</strong> {{ patient.email }}</p>
+    <p><strong>Role:</strong> Patient</p>
+</div>
+
+<div class="card">
+    <h3>Appointments</h3>
+    {% if appointments %}
+        <ul>
+            {% for appt in appointments %}
+                <li>
+                    <strong>{{ appt.title }}</strong><br>
+                    {{ appt.appointment_date.strftime('%d %b %Y %H:%M') }}<br>
+                    {{ appt.description }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No appointments found.</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h3>Prescriptions</h3>
+    {% if prescriptions %}
+        <ul>
+            {% for p in prescriptions %}
+                <li>
+                    <strong>{{ p.medicine_name }}</strong> — {{ p.dosage }}<br>
+                    {{ p.instructions }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No prescriptions found.</p>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h3>Notes</h3>
+    {% if notes %}
+        <ul>
+            {% for n in notes %}
+                <li>
+                    <strong>{{ n.note_type }}</strong> — {{ n.created_at.strftime('%d %b %Y %H:%M') }}<br>
+                    {{ n.content }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No notes available.</p>
+    {% endif %}
+</div>
+
+{% endblock %}

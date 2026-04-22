@@ -14,7 +14,7 @@
     <div class="center-page">
         <div class="container">
 
-            <a href="{{ url_for('create_appointment') }}">Return to book an Appointment</a>
+            <a href="{{ url_for('create_appointment') }}">Book a New Appointment</a>
 
             <ul>
                 {% for appointment in appointments %}
@@ -32,16 +32,16 @@
                 {% endfor %}
             </ul>
 
-            {% if session['role'] == 'patient' %}
+            {% if session.get('role') == 'patient' %}
                 <a href="{{ url_for('patient_dashboard') }}">Return to Dashboard</a>
 
-            {% elif session['role'] == 'family' %}
+            {% elif session.get('role') == 'family' %}
                 <a href="{{ url_for('family_dashboard') }}">Return to Dashboard</a>
 
-            {% elif session['role'] == 'doctor' %}
+            {% elif session.get('role') == 'doctor' %}
                 <a href="{{ url_for('doctor_dashboard') }}">Return to Dashboard</a>
 
-            {% elif session['role'] == 'carer' %}
+            {% elif session.get('role') == 'carer' %}
                 <a href="{{ url_for('carer_dashboard') }}">Return to Dashboard</a>
             {% endif %}
 

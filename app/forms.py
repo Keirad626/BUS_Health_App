@@ -31,7 +31,6 @@ class RegistrationForm(FlaskForm):
 
     submit = SubmitField("Register")
 
-
 class LoginForm(FlaskForm):
     email = StringField("Email", validators=[DataRequired(), Email()])
     password = PasswordField("Password", validators=[DataRequired()])
@@ -39,14 +38,30 @@ class LoginForm(FlaskForm):
 
 class AppointmentForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
-    appointment_date = DateField("Appointment Date", validators=[DataRequired()])
-    status = SelectField(
-        "Status",
-        choices=[("scheduled", "Scheduled"), ("completed", "Completed"), ("cancelled", "Cancelled")],
+
+    appointment_date = DateTimeLocalField(
+        "Appointment Date",
+        format="%Y-%m-%dT%H:%M",
         validators=[DataRequired()]
     )
+
+    status = SelectField(
+        "Status",
+        choices=[
+            ("scheduled", "Scheduled"),
+            ("completed", "Completed"),
+            ("cancelled", "Cancelled")
+        ],
+        validators=[DataRequired()]
+    )
+
     description = TextAreaField("Description")
+
+    # Only used by doctor/carer, but must exist
+    patient_id = SelectField("Patient", coerce=int)
+
     submit = SubmitField("Create Appointment")
+
 
 class PrescriptionForm(FlaskForm):
 

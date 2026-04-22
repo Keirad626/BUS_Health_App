@@ -16,10 +16,10 @@
     <div class="dashboard-grid">
         <div class="card">
             <h2>Appointments</h2>
-            <p>View Scheduled Appointments</p>
+            <p>Book an Appointment with a Patient</p>
 
             <a class="btn" href="{{url_for('view_appointments')}}">
-                View Appointments
+                Book Appointment
             </a>
         </div>
 
@@ -41,5 +41,36 @@
             </a>
         </div>
     </div>
+
+    <h2 class="appointments-title">Your Appointments</h2>
+
+<div class="appointments-card">
+    <table class="appointments-table">
+        <tr>
+            <th>Title</th>
+            <th>Patient</th>
+            <th>Created By</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+        {% for appt in appointments %}
+        <tr>
+            <td>{{ appt.title }}</td>
+            <td>{{ appt.patient.full_name }}</td>
+            <td>{{ appt.creator.full_name }}</td>
+            <td>{{ appt.appointment_date.strftime("%Y-%m-%d %H:%M") }}</td>
+            <td>{{ appt.status }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No appointments found.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+
+
 </body>
 </html>

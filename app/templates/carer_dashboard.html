@@ -17,8 +17,9 @@
             <div class="form-box blue-box">
                 <h3>Options</h3>
 
-                <p><a href="{{ url_for('appointments') }}">View Appointments</a></p>
+                <p><a href="{{ url_for('view_appointments') }}">View Appointments</a></p>
                 <p><a href="{{ url_for('create_appointment') }}">Book Appointment for Patient</a></p>
+                <p><a href="{{ url_for('carer_patients') }}">View Patient Notes</a></p>
             </div>
 
             <p class="info"><a href="{{ url_for('logout') }}">Logout</a></p>
