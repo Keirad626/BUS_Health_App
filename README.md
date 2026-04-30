@@ -4,7 +4,10 @@ A small amount of CSS code is also included.
 The BUS Health Monitoring App is a Flask-based web application that supports the communication of patients, doctors, carers and family members through a health monitoring system.
 
 ## The BUS Health Monitoring App is designed to complete challenge 2: Remote Health Monitoring- Supporting Independent Living for Older Adults.
-Whilst much of the code within this project encapsulates all four challenge focuses, we have mainly picked points one and three.
+Whilst much of the code within this project encapsulates all four challenge focuses, we have mainly picked points one and three:
+- Supporting medication adherence or daily routines.
+- Enabling basic health tracking or reporting.
+  
 Support for medication adherence (or daily routines) has been implemented through the notes system and the prescription system.
 Built within the routes of this project, the app allows for medication to be prescribed from doctor to patient.
 Family members have access to these notes, as do Carers.
@@ -43,7 +46,7 @@ The UI of the app is intentionally in large print, as older patients may have is
 As such, the font style is also kept simple and non-intrusive. 
 Furthermore, the button design is big and blocky, making it easier for older patients, who may not be technilogically adept, to navigate through the dashboard effortlessly.
 The monitoring app is designed as a suplementary device, suporting the role of real life and in-person decision making. 
-The principle purpose of the app is as an aid for carers who may struggle with communication issues, long waits from doctors or language barriers. 
+The principle purpose of the app is to be used as an aid for carers who may struggle with communication issues, long waits from doctors or language barriers. 
 
 ## Specific User Role Features
 ### Doctor
@@ -85,6 +88,10 @@ For the purposes of the demonstration only, this does not hold.
 - SQLite: Database
 - Jinja2: Templating
 - Backend Security: Werkzeug (Password Hashsing)
+
+# Use of AI Tools within this application
+This project has used the assistance of AI Tools for debugging guidance, code refinement and error clarity. 
+The AI tools used in this project were GitHUb (Copilot) and Microsoft Copilot.
 
 Thank you for reading! I hope that you enjoy the app as hours of hardwork and debugging has been poured into it. 
 If you run into any issues, do not hesitate to refer to the walkthrough video to see the successful implementation of each role.
